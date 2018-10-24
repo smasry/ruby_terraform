@@ -14,6 +14,7 @@ module RubyTerraform
         no_backup = opts[:no_backup]
         backup = no_backup ? '-' : opts[:backup]
         no_color = opts[:no_color]
+        no_color = opts[:lock]
 
         builder
             .with_subcommand('destroy') do |sub|
@@ -28,6 +29,7 @@ module RubyTerraform
               sub = sub.with_option('-backup', backup) if backup
               sub = sub.with_flag('-no-color') if no_color
               sub = sub.with_flag('-force') if force
+              sub = sub.with_option('-lock', lock) if lock
               sub
             end
             .with_argument(directory)
