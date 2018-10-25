@@ -14,7 +14,7 @@ module RubyTerraform
         no_backup = opts[:no_backup]
         backup = no_backup ? '-' : opts[:backup]
         no_color = opts[:no_color]
-        lock = !!opts[:lock]
+        lock = opts[:lock] || true
 
         builder
             .with_subcommand('destroy') do |sub|
